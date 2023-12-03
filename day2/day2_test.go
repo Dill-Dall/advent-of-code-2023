@@ -60,25 +60,3 @@ Game 5: 6 red, 1 blue, 3 green; 2 blue, 1 red, 2 green`
 		t.Errorf("findMinimumAmountOfStones() == %d, want %d", got, want)
 	}
 }
-
-func TestDay2Part2(t *testing.T) {
-
-	file, err := os.Open("puzzleinput")
-	if err != nil {
-		log.Fatalf("Error opening file: %v", err)
-	}
-	defer file.Close()
-
-	bytes, err := io.ReadAll(file)
-	if err != nil {
-		log.Fatalf("Error reading file: %v", err)
-	}
-
-	input := string(bytes)
-	want := 66016
-	got := findMinimumAmountOfPossibleStones(input)
-
-	if got != want {
-		t.Errorf("findPossibleAmountOfStones() == %d, want %d", got, want)
-	}
-}

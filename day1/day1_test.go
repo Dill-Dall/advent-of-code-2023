@@ -19,6 +19,7 @@ treb7uchet`
 	}
 }
 
+
 func TestDay1PartOneTestPuzzle(t *testing.T) {
 	file, err := os.Open("puzzleinput")
 	if err != nil {
@@ -161,7 +162,7 @@ pqr3stu8vwx
 a1b2c3d4e5f
 treb7uchet`
 	want := 142
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -173,7 +174,7 @@ pqr3stu8vwx
 a1b2c3d4e5f
 treb7uchet`
 	want := 142
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -182,7 +183,7 @@ treb7uchet`
 func TestDayRegex1PartTwoInitial1(t *testing.T) {
 	input := `two1nine`
 	want := 29
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -191,7 +192,7 @@ func TestDayRegex1PartTwoInitial1(t *testing.T) {
 func TestDayRegex1PartTwoInitial2(t *testing.T) {
 	input := `eightwothree`
 	want := 83
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -200,7 +201,7 @@ func TestDayRegex1PartTwoInitial2(t *testing.T) {
 func TestDayRegex1PartTwoInitial3(t *testing.T) {
 	input := `abcone2threexyz`
 	want := 13
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -209,7 +210,7 @@ func TestDayRegex1PartTwoInitial3(t *testing.T) {
 func TestDayRegex1PartTwoInitial4(t *testing.T) {
 	input := `xtwone3four`
 	want := 24
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -218,7 +219,7 @@ func TestDayRegex1PartTwoInitial4(t *testing.T) {
 func TestDayRegex1PartTwoInitial5(t *testing.T) {
 	input := `4nineeightseven2`
 	want := 42
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -227,7 +228,7 @@ func TestDayRegex1PartTwoInitial5(t *testing.T) {
 func TestDayRegex1PartTwoInitial6(t *testing.T) {
 	input := `zoneight234`
 	want := 14
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -236,7 +237,7 @@ func TestDayRegex1PartTwoInitial6(t *testing.T) {
 func TestDayRegex1PartTwoInitial7(t *testing.T) {
 	input := `7pqrstsixteen`
 	want := 76
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -245,7 +246,7 @@ func TestDayRegex1PartTwoInitial7(t *testing.T) {
 func TestDayRegex1PartTwoInitialAll(t *testing.T) {
 	input := `54`
 	want := 54
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -253,7 +254,7 @@ func TestDayRegex1PartTwoInitialAll(t *testing.T) {
 func TestDayRegex1PartTwoInitial8(t *testing.T) {
 	input := `374`
 	want := 34
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
 	}
@@ -265,7 +266,7 @@ oneight
 sevenine
 twone`
 	want := 201
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)
@@ -288,7 +289,7 @@ func TestDayRegex1PartTwoTestPuzzle(t *testing.T) {
 
 	input := string(bytes)
 	want := 55413
-	got := regexTest(input)
+	got := SumEdgeNumbersInStrings(input)
 
 	if got != want {
 		t.Errorf("CalibrationValue() == %d, want %d", got, want)

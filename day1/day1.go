@@ -3,9 +3,24 @@ package day1
 import (
 	"bufio"
 	"fmt"
+	"log"
 	"strconv"
 	"strings"
 )
+
+func RunDay1_1_beta() {
+	data, err := puzzleinput.ReadFile("puzzleinput")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	input := string(data)
+
+	result := calculatedCalibration(input, false)
+
+	fmt.Printf("Day 1-1-beta answer is: %d\n", result)
+
+}
 
 func calculatedCalibration(calibrationvalues string, useStringNumerals bool) int {
 	scanner := bufio.NewScanner(strings.NewReader(calibrationvalues))
@@ -15,8 +30,8 @@ func calculatedCalibration(calibrationvalues string, useStringNumerals bool) int
 	for scanner.Scan() {
 		line := scanner.Text()
 		sum = calculateTheSum(line, useStringNumerals, sum)
-		testSum := calculateTheSum(line, true, 0)
-		fmt.Printf("#%d: %s : %d\n", counter, line, testSum)
+		/* 	testSum := calculateTheSum(line, true, 0)
+		fmt.Printf("#%d: %s : %d\n", counter, line, testSum) */
 		counter++
 	}
 

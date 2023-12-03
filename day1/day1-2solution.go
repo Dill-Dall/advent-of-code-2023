@@ -2,13 +2,50 @@ package day1
 
 import (
 	"bufio"
+	"embed"
 	"fmt"
+	"log"
 	"regexp"
 	"strconv"
 	"strings"
 )
 
-func regexTest(calibrationvalues string) int {
+//go:embed puzzleinput
+var puzzleinput embed.FS
+
+func RunDay1_1() {
+	data, err := puzzleinput.ReadFile("puzzleinput")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	input := string(data)
+
+	result := calculatedCalibration(input, false)
+
+	fmt.Printf("Day 1-1 answer is: %d\n", result)
+
+}
+func RunDay1_2() {
+	data, err := puzzleinput.ReadFile("puzzleinput")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	input := string(data)
+
+	result := SumEdgeNumbersInStrings(input)
+
+	fmt.Printf("Day 1-2 answer is: %d\n", result)
+
+}
+
+func SumEdgeNumbersInStrings(calibrationvalues string) int {
+	return SumEdgeNumbersInStringsUsingNumerals(calibrationvalues, true)
+
+}
+
+func SumEdgeNumbersInStringsUsingNumerals(calibrationvalues string, readNumerals bool) int {
 
 	scanner := bufio.NewScanner(strings.NewReader(calibrationvalues))
 
@@ -16,9 +53,9 @@ func regexTest(calibrationvalues string) int {
 	var counter = 0
 	for scanner.Scan() {
 		line := scanner.Text()
-		sum += regexSum(line)
-		testSum := regexSum(line)
-		fmt.Printf("#%d: %s : %d\n", counter, line, testSum)
+		sum += regexSum(line, readNumerals)
+		/* testSum := regexSum(line)
+		fmt.Printf("#%d: %s : %d\n", counter, line, testSum) */
 		counter++
 	}
 
@@ -48,21 +85,30 @@ func reverse(s string) string {
 	return string(runes)
 }
 
-func regexSum(line string) int {
-	r := regexp.MustCompile(`([1-9]|one|two|three|four|five|six|seven|eight|nine)`)
+var (
+	numeralRegex    = regexp.MustCompile(`([1-9]|one|two|three|four|five|six|seven|eight|nine)`)
+	nonNumeralRegex = regexp.MustCompile(`([1-9])`)
+)
 
+func regexSum(line string, useNumerals bool) int {
+	regexp := numeralRegex
+	if !useNumerals {
+		regexp = nonNumeralRegex
+	}
 	sum := 0
 	var matches []string
 	for i := 0; i < len(line); i++ {
 		// Finds the leftsmost match from the i: position
-		loc := r.FindStringIndex(line[i:])
+		loc := regexp.FindStringIndex(line[i:])
 		if loc != nil {
 			// overlap matches
 			match := line[i:][loc[0]:loc[1]]
 
 			// Convert word numerals to their numeric counterparts
-			if num, ok := regexnumerals[match]; ok {
-				match = num
+			if useNumerals {
+				if num, ok := regexnumerals[match]; ok {
+					match = num
+				}
 			}
 			matches = append(matches, match)
 

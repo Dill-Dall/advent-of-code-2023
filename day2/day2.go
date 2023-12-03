@@ -2,7 +2,9 @@ package day2
 
 import (
 	"bufio"
+	"embed"
 	"fmt"
+	"log"
 	"regexp"
 	"strconv"
 	"strings"
@@ -18,6 +20,22 @@ var (
 	gameRgx  = regexp.MustCompile(`Game ([0-9]+): (.+)`)
 	colorRgx = regexp.MustCompile(`([0-9]+) (.+)`)
 )
+
+//go:embed puzzleinput
+var puzzleinput embed.FS
+
+func RunDay2_2() {
+	data, err := puzzleinput.ReadFile("puzzleinput")
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	input := string(data)
+
+	result := findMinimumAmountOfPossibleStones(input)
+
+	fmt.Printf("Day 2-2 answer is: %d\n", result)
+}
 
 func calculatePossibleStoneSets(input string, possibleamountofstones string) int {
 	scanner := bufio.NewScanner(strings.NewReader(input))
