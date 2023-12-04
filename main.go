@@ -4,6 +4,7 @@ import (
 	"aoc-2023/day1"
 	"aoc-2023/day2"
 	"aoc-2023/day3"
+	"aoc-2023/day4.go"
 	"fmt"
 	"time"
 )
@@ -24,4 +25,5 @@ func main() {
 	timeFunction(day2.RunDay2_2)
 	timeFunction(day3.RunDay3_1)
 	timeFunction(day3.RunDay3_2)
+	timeFunction(day4.RunDay4_1)
 }
