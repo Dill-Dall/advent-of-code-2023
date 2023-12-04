@@ -30,8 +30,6 @@ func calculatedCalibration(calibrationvalues string, useStringNumerals bool) int
 	for scanner.Scan() {
 		line := scanner.Text()
 		sum = calculateTheSum(line, useStringNumerals, sum)
-		/* 	testSum := calculateTheSum(line, true, 0)
-		fmt.Printf("#%d: %s : %d\n", counter, line, testSum) */
 		counter++
 	}
 
