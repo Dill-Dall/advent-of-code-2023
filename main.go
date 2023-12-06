@@ -6,6 +6,7 @@ import (
 	"aoc-2023/day3"
 	"aoc-2023/day4"
 	"aoc-2023/day5"
+	"aoc-2023/day6"
 	"fmt"
 	"os"
 	"strconv"
@@ -38,6 +39,8 @@ func main() {
 		"4_2": day4.RunDay4_2,
 		"5_1": day5.RunDay5_1,
 		"5_2": day5.RunDay5_2,
+		"6_1": day6.RunDay6_2,
+		"6_2": day6.RunDay6_2,
 	}
 
 	if dayArg == "all" {
