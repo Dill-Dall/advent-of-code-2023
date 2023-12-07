@@ -8,7 +8,10 @@
 			"mode": "auto",
 			"program": "${workspaceFolder}/main.go",
 			"env": {},
-			"args": []
+			"args": [
+				"6",
+				"2"
+			]
 		}
 	]
 }
