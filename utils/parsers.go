@@ -7,7 +7,7 @@ import (
 )
 
 var (
-	numbersRgx = regexp.MustCompile(`([0-9]+)`)
+	numbersRgx = regexp.MustCompile(`(-?[0-9]+)`)
 )
 
 func ProcessNumerals(numerals string) []int {

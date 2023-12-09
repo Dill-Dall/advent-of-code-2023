@@ -82,7 +82,7 @@ func Execute(input string, thisIsPartTwo bool) int {
 		direction := navigater[i]
 		iteratorsAtZ := 0
 		for key, _ := range iterators {
-			//	fmt.Printf("FROM: navigateCounter: %d, value: %s, direction: %s, iteratro: %s \n", navigateCounter, string(iterators[key].value[:]), string(direction), key)
+			//fmt.Printf("FROM: navigateCounter: %d, value: %s, direction: %s, iteratro: %s \n", navigateCounter, string(iterators[key].value[:]), string(direction), key)
 
 			if direction == 'L' {
 				iterators[key] = iterators[key].left

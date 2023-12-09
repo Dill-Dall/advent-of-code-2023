@@ -9,8 +9,8 @@
 			"program": "${workspaceFolder}/main.go",
 			"env": {},
 			"args": [
-				"8",
-				"2"
+				"9",
+				"1"
 			]
 		}
 	]
