@@ -15,7 +15,6 @@ var (
 	puzzleinput embed.FS
 
 	isPartTwo = false
-	iterator  *Node
 	iterators = make(map[string]*Node)
 	nodes     = make(map[string]*Node)
 )
@@ -74,42 +73,71 @@ func Execute(input string, thisIsPartTwo bool) int {
 
 		counter++
 	}
+	returnValue := getNumberOfIterationsForZ(navigater)
 
+	return returnValue
+
+}
+
+func getNumberOfIterationsForZ(navigater string) int {
 	navigateCounter := 0
 
+	zFounds := make(map[string]int)
+
+outer:
 	for i := 0; i < len(navigater); i++ {
 		navigateCounter++
 		direction := navigater[i]
-		iteratorsAtZ := 0
-		for key, _ := range iterators {
-			//fmt.Printf("FROM: navigateCounter: %d, value: %s, direction: %s, iteratro: %s \n", navigateCounter, string(iterators[key].value[:]), string(direction), key)
+		for key := range iterators {
+			_, exists := zFounds[key]
+			if !exists {
+				if direction == 'L' {
+					iterators[key] = iterators[key].left
+				} else {
+					iterators[key] = iterators[key].right
+				}
 
-			if direction == 'L' {
-				iterators[key] = iterators[key].left
-			} else {
-				iterators[key] = iterators[key].right
-			}
-
-			//	fmt.Printf("TO:   navigateCounter: %d, value: %s, direction: %s, iteratro: %s \n", navigateCounter, string(iterators[key].value[:]), string(direction), key)
-
-			if isPartTwo && iterators[key] != nil && iterators[key].value == key+"Z" {
-				iteratorsAtZ++
-				if iteratorsAtZ == len(iterators) {
+				if isPartTwo && iterators[key].value[2] == 'Z' {
+					zFounds[key] = navigateCounter
+					if len(zFounds) == len(iterators) {
+						break outer
+					}
+				}
+				if !isPartTwo && iterators[key] != nil && iterators[key].value == "ZZZ" {
 					return navigateCounter
 				}
-			}
-			if !isPartTwo && iterators[key] != nil && iterators[key].value == "ZZZ" {
-				return navigateCounter
 			}
 		}
 
 		if i == len(navigater)-1 {
-			i = -1 // Reset to -1 so that it becomes 0 in the next iteration
+			i = -1
 		}
 	}
+	return extractLcm(zFounds)
+}
 
-	return -1
+func extractLcm(zFounds map[string]int) int {
+	values := make([]int, 0, len(zFounds))
+	for _, value := range zFounds {
+		values = append(values, value)
+	}
 
+	result := values[0]
+	for i := 1; i < len(values); i++ {
+		result = lcm(result, values[i])
+	}
+	return result
+}
+
+func gcd(a, b int) int {
+	for b != 0 {
+		a, b = b, a%b
+	}
+	return a
+}
+
+func lcm(a, b int) int {
+	return a * b / gcd(a, b)
 }
 
 var nodesRxp = regexp.MustCompile(`([A-Z0-9]+) = \(([A-Z0-9]+), ([A-Z0-9]+)\)`)
