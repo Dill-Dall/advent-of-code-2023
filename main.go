@@ -2,6 +2,8 @@ package main
 
 import (
 	"aoc-2023/day1"
+	"aoc-2023/day10"
+	"aoc-2023/day11"
 	"aoc-2023/day2"
 	"aoc-2023/day3"
 	"aoc-2023/day4"
@@ -33,23 +35,26 @@ func main() {
 	partArg = os.Args[2]
 
 	functions := map[string]func(){
-		"1_1": day1.RunDay1_1,
-		"1_2": day1.RunDay1_2,
-		"2_2": day2.RunDay2_2,
-		"3_1": day3.RunDay3_1,
-		"3_2": day3.RunDay3_2,
-		"4_1": day4.RunDay4_1,
-		"4_2": day4.RunDay4_2,
-		"5_1": day5.RunDay5_1,
-		"5_2": day5.RunDay5_2,
-		"6_1": day6.RunDay6_2,
-		"6_2": day6.RunDay6_2,
-		"7_1": day7.RunPart_1,
-		"7_2": day7.RunPart_2,
-		"8_1": day8.RunPart_1,
-		"8_2": day8.RunPart_2,
-		"9_1": day9.RunPart_1,
-		"9_2": day9.RunPart_2,
+		"1_1":  day1.RunDay1_1,
+		"1_2":  day1.RunDay1_2,
+		"2_2":  day2.RunDay2_2,
+		"3_1":  day3.RunDay3_1,
+		"3_2":  day3.RunDay3_2,
+		"4_1":  day4.RunDay4_1,
+		"4_2":  day4.RunDay4_2,
+		"5_1":  day5.RunDay5_1,
+		"5_2":  day5.RunDay5_2,
+		"6_1":  day6.RunDay6_2,
+		"6_2":  day6.RunDay6_2,
+		"7_1":  day7.RunPart_1,
+		"7_2":  day7.RunPart_2,
+		"8_1":  day8.RunPart_1,
+		"8_2":  day8.RunPart_2,
+		"9_1":  day9.RunPart_1,
+		"9_2":  day9.RunPart_2,
+		"10_1": day10.RunPart_1,
+		"10_2": day10.RunPart_2,
+		"11_1": day11.RunPart_1,
 	}
 
 	if dayArg == "all" {

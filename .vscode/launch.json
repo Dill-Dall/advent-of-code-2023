@@ -9,7 +9,7 @@
 			"program": "${workspaceFolder}/main.go",
 			"env": {},
 			"args": [
-				"9",
+				"11",
 				"1"
 			]
 		}
